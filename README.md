@@ -10,8 +10,8 @@ This repository offers a streamlined approach to fine-tune causal language model
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/HemanthIITJ/hf_finetuning.git
-cd hf_finetuning
+git clone https://github.com/generalaimodels/hffinetuning.git
+cd hffinetuning
 ```
 
 ### Install Required Dependencies
@@ -27,7 +27,7 @@ pip install -r requirements.txt
 To train a model, execute the following command:
 
 ```bash
-python causal_language_model.py hfconfig.yml
+python hf_finetuning/causal_language_model.py hfconfig.yml
 ```
 
 ### Visualizing Training
@@ -35,7 +35,7 @@ python causal_language_model.py hfconfig.yml
 Once the training is complete, you can visualize the trainer's state using the following command:
 
 ```bash
-python visualize.py ./outputs/trainer_state.json
+python hf_finetuning/visualize.py ./outputs/trainer_state.json
 ```
 
 ## Configuring the Model
