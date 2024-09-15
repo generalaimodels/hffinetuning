@@ -1,0 +1,22 @@
+# config.yml
+
+# Model and tokenizer
+model_name_or_path: "gpt2"
+tokenizer_name_or_path: "gpt2"
+
+# Dataset
+dataset_name: "ade_corpus_v2"
+text_column: "text"
+label_column: "Label"
+
+# Training parameters
+device: "cuda"  # or "cpu" if GPU is not available
+num_virtual_tokens: 20
+prompt_tuning_init_text: "Classify the following text into categories:"
+max_length: 128
+learning_rate: 3e-5
+num_epochs: 3
+batch_size: 8
+
+# Miscellaneous
+seed: 42

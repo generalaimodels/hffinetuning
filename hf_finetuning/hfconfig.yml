@@ -1,0 +1,37 @@
+ModelArguments:
+  model_name_or_path: "gpt2"
+  tokenizer_name: "gpt2"
+  cache_dir: "./cache"
+  model_revision: "main"
+  use_fast_tokenizer: true
+  torch_dtype: "auto"
+  low_cpu_mem_usage: true
+  trust_remote_code: false
+
+DataTrainingArguments:
+  dataset_name: "fka/awesome-chatgpt-prompts"
+  dataset_config_name: null
+  input_column_names: ["act"]  # list of input columns
+  target_column_name: "prompt"  # target column
+  block_size: 128
+  overwrite_cache: false
+  preprocessing_num_workers: 1
+  validation_split_percentage: 10
+  streaming: false
+  max_length: 512
+
+TrainingArguments:
+  output_dir: "./outputs"
+  overwrite_output_dir: true
+  num_train_epochs: 3
+  per_device_train_batch_size: 16
+  per_device_eval_batch_size: 16
+  learning_rate: 0.001
+  logging_dir: "./logs"
+  do_train: true
+  do_eval: true
+  logging_steps: 10
+  save_steps: 100
+  save_total_limit: 2
+  fp16: true
+  seed: 42

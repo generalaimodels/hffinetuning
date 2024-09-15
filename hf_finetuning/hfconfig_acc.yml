@@ -1,0 +1,58 @@
+ModelArguments:
+  model_name_or_path: "gpt2"
+  tokenizer_name: "gpt2"
+  cache_dir: "./cache"
+  model_revision: "main"
+  use_fast_tokenizer: true
+  torch_dtype: "auto"
+  low_cpu_mem_usage: true
+  trust_remote_code: false
+
+DataTrainingArguments:
+  dataset_name: "fka/awesome-chatgpt-prompts"
+  dataset_config_name: null
+  input_column_names: ["act"]  # list of input columns
+  target_column_name: "prompt"  # target column
+  block_size: 128
+  overwrite_cache: false
+  preprocessing_num_workers: 1
+  validation_split_percentage: 10
+  streaming: false
+  max_length: 512
+
+TrainingArguments:
+  output_dir: "./results"  # Directory where the model checkpoints and logs will be saved.
+  overwrite_output_dir: true  # Overwrite the content of the output directory if it exists.
+  do_train: true  # Whether to run training.
+  do_eval: true  # Whether to run evaluation on the validation set.
+  per_device_train_batch_size: 16  # Batch size per GPU/TPU core/CPU for training.
+  per_device_eval_batch_size: 16  # Batch size per GPU/TPU core/CPU for evaluation.
+  gradient_accumulation_steps: 1  # Number of updates steps to accumulate before performing a backward/update pass.
+  learning_rate: 0.001  # Initial learning rate.
+  weight_decay: 0.01  # Weight decay to apply (if any).
+  max_grad_norm: 1.0  # Max gradient norm.
+  num_train_epochs: 1  # Total number of training epochs to perform.
+  max_train_steps: null  # Total number of training steps to perform; overrides num_train_epochs if set.
+  lr_scheduler_type: "linear"  # The scheduler type to use.
+  num_warmup_steps: 500  # Number of steps used for a linear warmup from 0 to learning_rate.
+  logging_dir: "./logs"  # Directory for storing logs.
+  logging_steps: 500  # Log every X updates steps.
+  save_steps: 5000  # Save checkpoint every X updates steps.
+  save_total_limit: 2  # Limit the total amount of checkpoints.
+  seed: 42  # Random seed for reproducibility.
+  fp16: false  # Whether to use 16-bit (mixed) precision.
+  evaluation_strategy: "epoch"  # Evaluation strategy to use during training.
+  save_strategy: "epoch"  # Save strategy to use during training.
+  push_to_hub: false  # Whether to push the model to the Hugging Face Hub.
+  hub_model_id: null  # Model id for Hub.
+  hub_token: null  # Token for pushing to the Hugging Face Hub.
+  report_to: "tensorboard"  # The list of integrations to report the results and logs to.
+  checkpointing_steps: "epoch"  # Save checkpoints at each epoch.
+  resume_from_checkpoint: null  # Path to a checkpoint folder to resume training.
+  with_tracking: true  # Whether to enable experiment tracking.
+  should_log: false
+  get_process_log_level: true 
+  local_rank : 0
+  device : "cpu"
+  n_gpu : 0
+  parallel_mode : 2
